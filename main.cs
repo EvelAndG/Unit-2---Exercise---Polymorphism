@@ -10,6 +10,10 @@ namespace MyApplication
     {
       Console.WriteLine("I am attacking you with a generic siege weapon.");
     }
+		public virtual void Reload()
+		{
+			Console.WriteLine("Reloading the weapon, my lord");
+		}
   }
 //////////////////////////////////////////////////////////////////////////////////////////
   class Catapult : SiegeWeapon  // Derived class (child) 
@@ -35,15 +39,25 @@ namespace MyApplication
 		{
 			Console.WriteLine("The ballista fires a massive arrow!");
 		}
+		public override void Reload()
+		{
+			Console.WriteLine("Reloading the ballista, Sire");
+		}		
 	}
 
 	class BatteringRam : SiegeWeapon
 	{
 		public override void Attack()
 		{
-			Console.WriteLine("The Battering ram is breaking through the gate!");
+			Console.WriteLine("The battering ram is ramming the gate!");
+		}
+		public override void Reload()
+		{
+			Console.WriteLine("The battering ram was destroyed. Sending another Battering ram");
 		}
 	}
+
+	
   class Program
   {
     static void Main(string[] args)
@@ -62,11 +76,11 @@ namespace MyApplication
 
 			Ballista fourthWeapon = new Ballista();
 			fourthWeapon.Attack();
+			fourthWeapon.Reload();
 
 			SiegeWeapon fifthWeapon = new BatteringRam();
 			fifthWeapon.Attack();
-
-
+			fifthWeapon.Reload();
     }
   }
 }
